@@ -14,13 +14,10 @@ services:
 
   stats-db:
     image: postgres:16.1
-
-  ewm-service:
     container_name: stats-db-container
     volumes:
       - /var/lib/postgresql/data/
     ports:
-      - "8080:8080"
       - "6541:5432"
     environment:
       - POSTGRES_DB=stats-db
