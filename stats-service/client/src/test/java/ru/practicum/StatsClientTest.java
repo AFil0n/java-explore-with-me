@@ -10,6 +10,7 @@ import org.springframework.http.*;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 import ru.practicum.dto.EndpointHitDto;
+import ru.practicum.dto.StatsDto;
 import ru.practicum.utils.SimpleDateTimeFormatter;
 
 import java.time.LocalDateTime;
@@ -81,19 +82,18 @@ class StatsClientTest {
                 eq(HttpMethod.GET),
                 argThat(this::checkHeaders),
                 eq(Object.class),
-                eq(Map.of("start", start, "end", end, "uris", uris, "unique", unique)))
+                eq(Map.of("start", start, "end", end, "uris", String.join(",", List.of("/test1", "/test2")), "unique", unique)))
         ).thenReturn(expectedResponse);
 
-        ResponseEntity<Object> actualResponse = statsClient.getStats(start, end, uris, unique);
+        List<StatsDto> actualResponse = statsClient.getStats(start, end, uris, unique);
 
         assertNotNull(actualResponse);
-        assertEquals(expectedResponse.getStatusCode(), actualResponse.getStatusCode());
         verify(restTemplate, times(1)).exchange(
                 anyString(),
                 eq(HttpMethod.GET),
                 argThat(this::checkHeaders),
                 eq(Object.class),
-                eq(Map.of("start", start, "end", end, "uris", uris, "unique", unique)));
+                eq(Map.of("start", start, "end", end, "uris", String.join(",", List.of("/test1", "/test2")), "unique", unique)));
     }
 
     @Test
@@ -109,19 +109,18 @@ class StatsClientTest {
                 eq(HttpMethod.GET),
                 argThat(this::checkHeaders),
                 eq(Object.class),
-                eq(Map.of("start", start, "end", end, "uris", uris, "unique", unique)))
+                eq(Map.of("start", start, "end", end, "uris", String.join(",", List.of()), "unique", unique)))
         ).thenReturn(expectedResponse);
 
-        ResponseEntity<Object> actualResponse = statsClient.getStats(start, end, uris, unique);
+        List<StatsDto> actualResponse = statsClient.getStats(start, end, uris, unique);
 
         assertNotNull(actualResponse);
-        assertEquals(expectedResponse.getStatusCode(), actualResponse.getStatusCode());
         verify(restTemplate, times(1)).exchange(
                 anyString(),
                 eq(HttpMethod.GET),
                 argThat(this::checkHeaders),
                 eq(Object.class),
-                eq(Map.of("start", start, "end", end, "uris", uris, "unique", unique)));
+                eq(Map.of("start", start, "end", end, "uris", String.join(",", List.of()), "unique", unique)));
     }
 
     @Test
@@ -140,13 +139,12 @@ class StatsClientTest {
                 eq(HttpMethod.GET),
                 argThat(this::checkHeaders),
                 eq(Object.class),
-                eq(Map.of("start", start, "end", end, "uris", uris, "unique", unique)))
+                eq(Map.of("start", start, "end", end, "uris", String.join(",", List.of("/test")), "unique", unique)))
         ).thenThrow(exception);
 
-        ResponseEntity<Object> response = statsClient.getStats(start, end, uris, unique);
+        List<StatsDto> response = statsClient.getStats(start, end, uris, unique);
 
-        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
-        assertNotNull(response.getBody());
+        assertEquals(0, response.size());
     }
 
     private boolean checkHeaders(HttpEntity<?> entity) {

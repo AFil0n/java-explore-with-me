@@ -1,3 +1,8 @@
+EWMServiceApp:
+  name: ewm-service
+  stats-service:
+    url: http://localhost:9090
+    #http://stats-server-container:9090
 server:
   port: 8080
 spring:
@@ -12,7 +17,7 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: 'true'
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: validate
     show-sql: 'true'
   sql:
     init:
@@ -20,6 +25,11 @@ spring:
 logging:
   level:
     org:
+      hibernate:
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
       springframework:
         orm:
           jpa:
