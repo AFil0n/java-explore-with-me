@@ -1,10 +1,6 @@
 package ru.practicum;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
+import org.springframework.http.*;
 import org.springframework.lang.Nullable;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
@@ -32,9 +28,11 @@ public class BaseClient {
 
         ResponseEntity<Object> responseEntity;
         try {
-            responseEntity = parameters != null
-                    ? rest.exchange(path, method, requestEntity, Object.class, parameters)
-                    : rest.exchange(path, method, requestEntity, Object.class);
+            if (parameters != null) {
+                responseEntity = rest.exchange(path, method, requestEntity, Object.class, parameters);
+            } else {
+                responseEntity = rest.exchange(path, method, requestEntity, Object.class);
+            }
         } catch (HttpStatusCodeException e) {
             return ResponseEntity.status(e.getStatusCode()).body(e.getResponseBodyAsByteArray());
         }
@@ -55,8 +53,10 @@ public class BaseClient {
 
         ResponseEntity.BodyBuilder responseBuilder = ResponseEntity.status(response.getStatusCode());
 
-        return response.hasBody()
-                ? responseBuilder.body(response.getBody())
-                : responseBuilder.build();
+        if (response.hasBody()) {
+            return responseBuilder.body(response.getBody());
+        }
+
+        return responseBuilder.build();
     }
 }
