@@ -2435,12 +2435,12 @@
 		},
 		{
 			"key": "message",
-			"value": "",
+			"value": "Тестовый комментарий",
 			"type": "string"
 		},
 		{
 			"key": "updatedMessage",
-			"value": "",
+			"value": "Animi earum accusantium sequi nulla ut harum delen",
 			"type": "string"
 		},
 		{
