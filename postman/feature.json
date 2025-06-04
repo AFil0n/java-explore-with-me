@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "50d0dbce-0cdf-4045-ad11-3415dd44fe58",
 		"name": "\"Explore with me\" API comments",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "40792709"
 	},
 	"item": [
@@ -101,7 +101,18 @@
 								}
 							}
 						},
-						"url": "{{baseURL}}/users/comments/{{uid}}/{{eid}}"
+						"url": {
+							"raw": "{{baseUrl}}/users/comments/{{uid}}/{{eid}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"comments",
+								"{{uid}}",
+								"{{eid}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -174,7 +185,18 @@
 								}
 							}
 						},
-						"url": "{{baseURL}}/users/comments/{{uid}}/{{eid}}"
+						"url": {
+							"raw": "{{baseUrl}}/users/comments/{{uid}}/{{eid}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"comments",
+								"{{uid}}",
+								"{{eid}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -246,7 +268,18 @@
 								}
 							}
 						},
-						"url": "{{baseURL}}/users/comments/{{uid}}/{{eid}}"
+						"url": {
+							"raw": "{{baseUrl}}/users/comments/{{uid}}/{{eid}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"comments",
+								"{{uid}}",
+								"{{eid}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -318,7 +351,18 @@
 								}
 							}
 						},
-						"url": "{{baseURL}}/users/comments/{{uid}}/{{eid}}"
+						"url": {
+							"raw": "{{baseUrl}}/users/comments/{{uid}}/{{eid}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"comments",
+								"{{uid}}",
+								"{{eid}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -390,7 +434,18 @@
 								}
 							}
 						},
-						"url": "{{baseURL}}/users/comments/{{uid}}/{{eid}}"
+						"url": {
+							"raw": "{{baseUrl}}/users/comments/{{uid}}/{{eid}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"comments",
+								"{{uid}}",
+								"{{eid}}"
+							]
+						}
 					},
 					"response": []
 				}
@@ -499,7 +554,17 @@
 								}
 							}
 						},
-						"url": "{{baseURL}}/users/comments/{{uid}}"
+						"url": {
+							"raw": "{{baseUrl}}/users/comments/{{uid}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"comments",
+								"{{uid}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -585,7 +650,17 @@
 								}
 							}
 						},
-						"url": "{{baseURL}}/users/comments/{{uid}}"
+						"url": {
+							"raw": "{{baseUrl}}/users/comments/{{uid}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"comments",
+								"{{uid}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -669,7 +744,17 @@
 								}
 							}
 						},
-						"url": "{{baseURL}}/users/comments/{{uid}}"
+						"url": {
+							"raw": "{{baseUrl}}/users/comments/{{uid}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"comments",
+								"{{uid}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -754,7 +839,17 @@
 								}
 							}
 						},
-						"url": "{{baseURL}}/users/comments/{{uid}}"
+						"url": {
+							"raw": "{{baseUrl}}/users/comments/{{uid}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"comments",
+								"{{uid}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -839,7 +934,17 @@
 								}
 							}
 						},
-						"url": "{{baseURL}}/users/comments/{{uid}}"
+						"url": {
+							"raw": "{{baseUrl}}/users/comments/{{uid}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"comments",
+								"{{uid}}"
+							]
+						}
 					},
 					"response": []
 				}
@@ -911,7 +1016,18 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "{{baseURL}}/users/comments/{{uid}}/{{comment_id}}"
+						"url": {
+							"raw": "{{baseUrl}}/users/comments/{{uid}}/{{comment_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"comments",
+								"{{uid}}",
+								"{{comment_id}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -978,7 +1094,17 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "{{baseURL}}/admin/comments/{{comment_id}}"
+						"url": {
+							"raw": "{{baseUrl}}/admin/comments/{{comment_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"admin",
+								"comments",
+								"{{comment_id}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1044,7 +1170,18 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "{{baseURL}}/users/comments/{{uid}}/9999999"
+						"url": {
+							"raw": "{{baseUrl}}/users/comments/{{uid}}/9999999",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"comments",
+								"{{uid}}",
+								"9999999"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1112,7 +1249,18 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "{{baseURL}}/users/comments/{{uid}}/{{comment_id}}"
+						"url": {
+							"raw": "{{baseUrl}}/users/comments/{{uid}}/{{comment_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"comments",
+								"{{uid}}",
+								"{{comment_id}}"
+							]
+						}
 					},
 					"response": []
 				}
@@ -1189,7 +1337,17 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{baseURL}}/users/comments/{{uid}}"
+						"url": {
+							"raw": "{{baseUrl}}/users/comments/{{uid}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"comments",
+								"{{uid}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1247,7 +1405,33 @@
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
-									""
+									"pm.test(\"Response is an array\", function() {\r",
+									"    pm.expect(pm.response.json()).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should return correct number of comments\", function() {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.length).to.equal(2); // Ожидаем 2 комментария\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Each comment has required fields\", function() {\r",
+									"    const comments = pm.response.json();\r",
+									"    \r",
+									"    comments.forEach(comment => {\r",
+									"        pm.expect(comment).to.have.all.keys(\r",
+									"            'id', 'user', 'event', 'message', 'created'\r",
+									"        );\r",
+									"        \r",
+									"        pm.expect(comment.user).to.have.all.keys('id', 'email', 'name');\r",
+									"        \r",
+									"        pm.expect(comment.event).to.have.all.keys(\r",
+									"            'id', 'annotation', 'category', 'description', 'eventDate',\r",
+									"            'location', 'paid', 'participantLimit', 'requestModeration',\r",
+									"            'title', 'createdOn', 'initiator', 'confirmedRequests',\r",
+									"            'publishedOn', 'state', 'views', 'adminStateAction', 'userStateAction'\r",
+									"        );\r",
+									"    });\r",
+									"});"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -1258,9 +1442,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/users/comments/{{uid}}?from=0&size=2",
+							"raw": "{{baseUrl}}/users/comments/{{uid}}?from=0&size=2",
 							"host": [
-								"{{baseURL}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"users",
@@ -1348,9 +1532,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/users/comments/{{uid}}?rangeStart=2022-01-06%2013%3A30%3A38&rangeEnd=2023-01-06%2013%3A30%3A38",
+							"raw": "{{baseUrl}}/users/comments/{{uid}}?rangeStart=2022-01-06%2013%3A30%3A38&rangeEnd=2023-01-06%2013%3A30%3A38",
 							"host": [
-								"{{baseURL}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"users",
@@ -1435,9 +1619,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/users/comments/{{uid}}?rangeStart=2024-01-06%2013%3A30%3A38&rangeEnd=2023-01-06%2013%3A30%3A38",
+							"raw": "{{baseUrl}}/users/comments/{{uid}}?rangeStart=2024-01-06%2013%3A30%3A38&rangeEnd=2023-01-06%2013%3A30%3A38",
 							"host": [
-								"{{baseURL}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"users",
@@ -1525,7 +1709,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{baseURL}}/comments/{{eid}}"
+						"url": {
+							"raw": "{{baseUrl}}/comments/{{eid}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"comments",
+								"{{eid}}"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1584,6 +1777,34 @@
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
+									"pm.test(\"Response is an array\", function() {\r",
+									"    pm.expect(pm.response.json()).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should return correct number of comments\", function() {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.length).to.equal(2); // Ожидаем 2 комментария\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Each comment has required fields\", function() {\r",
+									"    const comments = pm.response.json();\r",
+									"    \r",
+									"    comments.forEach(comment => {\r",
+									"        pm.expect(comment).to.have.all.keys(\r",
+									"            'id', 'user', 'event', 'message', 'created'\r",
+									"        );\r",
+									"        \r",
+									"        pm.expect(comment.user).to.have.all.keys('id', 'email', 'name');\r",
+									"        \r",
+									"        pm.expect(comment.event).to.have.all.keys(\r",
+									"            'id', 'annotation', 'category', 'description', 'eventDate',\r",
+									"            'location', 'paid', 'participantLimit', 'requestModeration',\r",
+									"            'title', 'createdOn', 'initiator', 'confirmedRequests',\r",
+									"            'publishedOn', 'state', 'views', 'adminStateAction', 'userStateAction'\r",
+									"        );\r",
+									"    });\r",
+									"});\r",
+									"\r",
 									""
 								],
 								"type": "text/javascript",
@@ -1595,9 +1816,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/comments/{{eid}}?from=0&size=2",
+							"raw": "{{baseUrl}}/comments/{{eid}}?from=0&size=2",
 							"host": [
-								"{{baseURL}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"comments",
@@ -1685,9 +1906,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/comments/{{eid}}?rangeStart=2022-01-06%2013%3A30%3A38&rangeEnd=2023-01-06%2013%3A30%3A38",
+							"raw": "{{baseUrl}}/comments/{{eid}}?rangeStart=2022-01-06%2013%3A30%3A38&rangeEnd=2023-01-06%2013%3A30%3A38",
 							"host": [
-								"{{baseURL}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"comments",
@@ -1772,9 +1993,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/comments/{{eid}}?rangeStart=2024-01-06%2013%3A30%3A38&rangeEnd=2023-01-06%2013%3A30%3A38",
+							"raw": "{{baseUrl}}/comments/{{eid}}?rangeStart=2024-01-06%2013%3A30%3A38&rangeEnd=2023-01-06%2013%3A30%3A38",
 							"host": [
-								"{{baseURL}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"comments",
@@ -1817,7 +2038,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "{{baseURL}}/admin/comments"
+						"url": {
+							"raw": "{{baseUrl}}/admin/comments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"admin",
+								"comments"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1831,6 +2061,34 @@
 									"pm.test(\"Ответ должен содержать код статуса 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
+									"\r",
+									"pm.test(\"Response is an array\", function() {\r",
+									"    pm.expect(pm.response.json()).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should return correct number of comments\", function() {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData.length).to.equal(2); // Ожидаем 2 комментария\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Each comment has required fields\", function() {\r",
+									"    const comments = pm.response.json();\r",
+									"    \r",
+									"    comments.forEach(comment => {\r",
+									"        pm.expect(comment).to.have.all.keys(\r",
+									"            'id', 'user', 'event', 'message', 'created'\r",
+									"        );\r",
+									"        \r",
+									"        pm.expect(comment.user).to.have.all.keys('id', 'email', 'name');\r",
+									"        \r",
+									"        pm.expect(comment.event).to.have.all.keys(\r",
+									"            'id', 'annotation', 'category', 'description', 'eventDate',\r",
+									"            'location', 'paid', 'participantLimit', 'requestModeration',\r",
+									"            'title', 'createdOn', 'initiator', 'confirmedRequests',\r",
+									"            'publishedOn', 'state', 'views', 'adminStateAction', 'userStateAction'\r",
+									"        );\r",
+									"    });\r",
+									"});\r",
 									""
 								],
 								"type": "text/javascript",
@@ -1842,9 +2100,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/admin/comments?from=0&size=2",
+							"raw": "{{baseUrl}}/admin/comments?from=0&size=2",
 							"host": [
-								"{{baseURL}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"admin",
@@ -1888,9 +2146,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/admin/comments?rangeStart=2022-01-06%2013%3A30%3A38&rangeEnd=2023-01-06%2013%3A30%3A38",
+							"raw": "{{baseUrl}}/admin/comments?rangeStart=2022-01-06%2013%3A30%3A38&rangeEnd=2023-01-06%2013%3A30%3A38",
 							"host": [
-								"{{baseURL}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"admin",
@@ -1931,9 +2189,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseURL}}/admin/comments?rangeStart=2024-01-06%2013%3A30%3A38&rangeEnd=2023-01-06%2013%3A30%3A38",
+							"raw": "{{baseUrl}}/admin/comments?rangeStart=2024-01-06%2013%3A30%3A38&rangeEnd=2023-01-06%2013%3A30%3A38",
 							"host": [
-								"{{baseURL}}"
+								"{{baseUrl}}"
 							],
 							"path": [
 								"admin",
@@ -2163,7 +2421,7 @@
 	],
 	"variable": [
 		{
-			"key": "baseURL",
+			"key": "baseUrl",
 			"value": "",
 			"type": "string"
 		},
