@@ -1,7 +1,8 @@
 EWMServiceApp:
   name: ewm-service
   stats-service:
-    url: http://stats-server-container:9090
+    url: http://localhost:9090
+    #http://stats-server-container:9090
 server:
   port: 8080
 spring:

@@ -24,7 +24,9 @@ import ru.practicum.extention.ConditionsNotMetException;
 import ru.practicum.extention.DateValidationException;
 import ru.practicum.extention.NotFoundException;
 import ru.practicum.user.model.User;
+import ru.practicum.user.model.UserMapper;
 import ru.practicum.user.repository.UserRepository;
+import ru.practicum.user.service.UserService;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -43,11 +45,12 @@ class EventServiceTest {
     @Mock
     private CategoryRepository categoryRepository;
 
-    @Mock
-    private UserRepository userRepository;
 
     @Mock
     private StatsClient statsClient;
+
+    @Mock
+    private UserService userService;
 
     @InjectMocks
     private EventService eventService;
@@ -120,28 +123,29 @@ class EventServiceTest {
 
     @Test
     void findByIdAndUserWhenValidShouldReturnEventFullDto() {
-        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        when(userService.findUserById(1L)).thenReturn(user);
         when(eventRepository.findById(1L)).thenReturn(Optional.of(event));
 
         EventDto result = eventService.findByIdAndUser(1L, 1L);
 
         assertEquals(event.getTitle(), result.getTitle());
-        verify(userRepository).findById(1L);
+        verify(userService).findUserById(1L);
         verify(eventRepository).findById(1L);
     }
 
     @Test
     void findByIdAndUserWhenUserNotExistsShouldThrowNotFoundException() {
-        when(userRepository.findById(1L)).thenReturn(Optional.empty());
+        when(userService.findUserById(1L))
+                .thenThrow(new NotFoundException("Пользователь не найден"));
 
         assertThrows(NotFoundException.class, () -> eventService.findByIdAndUser(1L, 1L));
-        verify(userRepository).findById(1L);
+        verify(userService).findUserById(1L);
         verify(eventRepository, never()).findById(anyLong());
     }
 
     @Test
     void findByIdAndUserWhenEventNotBelongsToUserShouldThrowConditionsNotMetException() {
-        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        when(userService.findUserById(1L)).thenReturn(user);
         when(eventRepository.findById(1L)).thenReturn(Optional.of(event));
         user.setId(2L); // Different user
 
@@ -205,14 +209,14 @@ class EventServiceTest {
 
     @Test
     void createWhenValidShouldReturnEventFullDto() {
-        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        when(userService.findUserById(1L)).thenReturn(user);
         when(categoryRepository.findById(1L)).thenReturn(Optional.of(category));
         when(eventRepository.save(any(Event.class))).thenReturn(event);
 
         EventDto result = eventService.create(1L, newEventDto);
 
         assertEquals(event.getTitle(), result.getTitle());
-        verify(userRepository).findById(1L);
+        verify(userService).findUserById(1L);
         verify(categoryRepository).findById(1L);
         verify(eventRepository).save(any(Event.class));
     }
@@ -220,7 +224,7 @@ class EventServiceTest {
     @Test
     void createWhenEventDateTooEarlyShouldThrowDateValidationException() {
         newEventDto.setEventDate(LocalDateTime.now().plusHours(1));
-        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        when(userService.findUserById(1L)).thenReturn(user);
         when(categoryRepository.findById(1L)).thenReturn(Optional.of(category));
 
         assertThrows(DateValidationException.class, () -> eventService.create(1L, newEventDto));
@@ -307,7 +311,7 @@ class EventServiceTest {
 
     @Test
     void updateByUserWhenValidShouldReturnUpdatedEvent() {
-        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        when(userService.findUserById(1L)).thenReturn(user);
         when(eventRepository.findById(1L)).thenReturn(Optional.of(event));
         when(eventRepository.save(any(Event.class))).thenReturn(event);
 
@@ -315,7 +319,7 @@ class EventServiceTest {
 
         assertEquals(userRequest.getTitle(), result.getTitle());
         assertEquals(EventState.PENDING, event.getState());
-        verify(userRepository).findById(1L);
+        verify(userService).findUserById(1L);
         verify(eventRepository).findById(1L);
         verify(eventRepository).save(event);
     }
@@ -323,7 +327,7 @@ class EventServiceTest {
     @Test
     void updateByUserWhenCategoryNotExistsShouldThrowNotFoundException() {
         userRequest.setCategory(999L);
-        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        when(userService.findUserById(1L)).thenReturn(user);
         when(eventRepository.findById(1L)).thenReturn(Optional.of(event));
         when(categoryRepository.findById(999L)).thenReturn(Optional.empty());
 
@@ -333,7 +337,7 @@ class EventServiceTest {
         );
 
         assertEquals("Категория с id=999 не найдена", exception.getMessage());
-        verify(userRepository).findById(1L);
+        verify(userService).findUserById(1L);
         verify(eventRepository).findById(1L);
         verify(categoryRepository).findById(999L);
         verify(eventRepository, never()).save(any());
@@ -342,7 +346,7 @@ class EventServiceTest {
     @Test
     void updateByUserWhenEventDateTooEarlyShouldThrowDateValidationException() {
         userRequest.setEventDate(LocalDateTime.now().plusMinutes(30));
-        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        when(userService.findUserById(1L)).thenReturn(user);
         when(eventRepository.findById(1L)).thenReturn(Optional.of(event));
 
         DateValidationException exception = assertThrows(
@@ -352,7 +356,7 @@ class EventServiceTest {
 
         assertEquals("Дата начала события должна быть не ранее чем через 1 час от даты редактирования.",
                 exception.getMessage());
-        verify(userRepository).findById(1L);
+        verify(userService).findUserById(1L);
         verify(eventRepository).findById(1L);
         verify(eventRepository, never()).save(any());
     }
@@ -360,7 +364,7 @@ class EventServiceTest {
     @Test
     void updateByUserWhenUpdatePublishedEventShouldThrowConditionsNotMetException() {
         event.setState(EventState.PUBLISHED);
-        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        when(userService.findUserById(1L)).thenReturn(user);
         when(eventRepository.findById(1L)).thenReturn(Optional.of(event));
 
         ConditionsNotMetException exception = assertThrows(
@@ -369,30 +373,31 @@ class EventServiceTest {
         );
 
         assertEquals("Нельзя редактировать опубликованное событие", exception.getMessage());
-        verify(userRepository).findById(1L);
+        verify(userService).findUserById(1L);
         verify(eventRepository).findById(1L);
         verify(eventRepository, never()).save(any());
     }
 
     @Test
     void updateByUserWhenNotInitiatorShouldThrowConditionsNotMetException() {
-        // Arrange
         User otherUser = new User();
         otherUser.setId(2L);
         otherUser.setName("Other User");
         otherUser.setEmail("other@example.com");
 
-        when(userRepository.findById(2L)).thenReturn(Optional.of(otherUser));
+        when(userService.findUserById(2L)).thenReturn(otherUser);
         when(eventRepository.findById(1L)).thenReturn(Optional.of(event));
 
-        // Act & Assert
+        assertNotEquals(2L, event.getInitiator().getId(),
+                "Тест невалиден: event уже принадлежит пользователю с ID=2");
+
         ConditionsNotMetException exception = assertThrows(
                 ConditionsNotMetException.class,
                 () -> eventService.updateByUser(2L, 1L, userRequest)
         );
 
         assertEquals("Событие может редактировать только его создатель", exception.getMessage());
-        verify(userRepository).findById(2L);
+        verify(userService).findUserById(2L);
         verify(eventRepository).findById(1L);
         verify(eventRepository, never()).save(any());
     }
