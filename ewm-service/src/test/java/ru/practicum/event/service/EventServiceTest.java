@@ -24,8 +24,6 @@ import ru.practicum.extention.ConditionsNotMetException;
 import ru.practicum.extention.DateValidationException;
 import ru.practicum.extention.NotFoundException;
 import ru.practicum.user.model.User;
-import ru.practicum.user.model.UserMapper;
-import ru.practicum.user.repository.UserRepository;
 import ru.practicum.user.service.UserService;
 
 import java.time.LocalDateTime;
