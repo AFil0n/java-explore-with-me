@@ -19,9 +19,9 @@ import ru.practicum.extention.ConditionsNotMetException;
 import ru.practicum.extention.DateValidationException;
 import ru.practicum.extention.NotFoundException;
 import ru.practicum.user.model.User;
-import ru.practicum.user.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import ru.practicum.dto.StatsDto;
+import ru.practicum.user.service.UserService;
 import ru.practicum.utils.SimpleDateTimeFormatter;
 import ru.practicum.StatsClient;
 
@@ -33,7 +33,7 @@ import java.util.List;
 public class EventService {
     private final EventRepository eventRepository;
     private final CategoryRepository categoryRepository;
-    private final UserRepository userRepository;
+    private final UserService userService;
     private final StatsClient statsClient;
 
     public List<EventDto> findByUserId(Long userId, Integer from, Integer size) {
@@ -41,15 +41,11 @@ public class EventService {
                 .stream()
                 .map(EventMapper::toEventDto)
                 .toList();
-
     }
 
     public EventDto findByIdAndUser(Long userId, Long eventId) {
-        userRepository.findById(userId)
-                .orElseThrow(() -> new NotFoundException("Пользователь с id=" + userId + " не найден"));
-
-        Event event = eventRepository.findById(eventId)
-                .orElseThrow(() -> new NotFoundException("Событие с id=" + eventId + " не найдено"));
+        userService.findUserById(userId);
+        Event event = findEventById(eventId);
 
         if (!event.getInitiator().getId().equals(userId)) {
             throw new ConditionsNotMetException("Просмотр полной информации о событии доступен только для создателя события");
@@ -81,7 +77,8 @@ public class EventService {
 
     @Transactional
     public EventDto findById(Long eventId) {
-        Event event = eventRepository.findById(eventId).orElseThrow(() -> new NotFoundException("Событие с id=" + eventId + " не найдено"));
+        Event event = findEventById(eventId);
+
         if (event.getState() != EventState.PUBLISHED) {
             throw new NotFoundException("Событие с id=" + eventId + " не найдено");
         }
@@ -90,6 +87,13 @@ public class EventService {
         eventRepository.save(event);
 
         return EventMapper.toEventDto(event);
+    }
+
+    @Transactional
+    public Event findEventById(Long eventId) {
+        Event event = eventRepository.findById(eventId)
+                .orElseThrow(() -> new NotFoundException("Событие с id=" + eventId + " не найдено"));
+        return event;
     }
 
     private Long getViews(Long id) {
@@ -102,7 +106,7 @@ public class EventService {
     }
 
     public EventDto create(Long userId, EventDto newEventDto) {
-        User initiator = userRepository.findById(userId).orElseThrow(() -> new NotFoundException("Пользователь с id=" + userId + " не найден"));
+        User initiator = userService.findUserById(userId);
         Category category = categoryRepository.findById(newEventDto.getCategory())
                 .orElseThrow(() -> new NotFoundException("Категория с id=" + newEventDto.getCategory() + " не найдена"));
         if (newEventDto.getEventDate().isBefore(LocalDateTime.now().plusHours(2))) {
@@ -115,7 +119,7 @@ public class EventService {
     }
 
     public EventDto updateByAdmin(long eventId, UpdateAdminEventDto eventDto) {
-        Event event = eventRepository.findById(eventId).orElseThrow(() -> new NotFoundException("Событие с id=" + eventId + " не найдено"));
+        Event event = findEventById(eventId);
         LocalDateTime eventDate = eventDto.getEventDate() == null ? event.getEventDate() : eventDto.getEventDate();
         if (eventDate.isBefore(LocalDateTime.now().plusHours(1))) {
             throw new DateValidationException("Дата начала события должна быть не ранее чем через 1 час от даты редактирования.");
@@ -147,7 +151,7 @@ public class EventService {
     }
 
     public EventDto updateByUser(Long userId, Long eventId, UpdateEventDto eventDto) {
-        userRepository.findById(userId).orElseThrow(() -> new NotFoundException("Пользователь с id=" + userId + " не найден"));
+        userService.findUserById(userId);
         Event event = eventRepository.findById(eventId).orElseThrow(() -> new NotFoundException("Событие с id=" + eventId + " не найдено"));
         if (!event.getInitiator().getId().equals(userId)) {
             throw new ConditionsNotMetException("Событие может редактировать только его создатель");
@@ -173,6 +177,7 @@ public class EventService {
         if (eventDto.getStateAction() == EventUserStateAction.CANCEL_REVIEW) {
             event.setState(EventState.CANCELED);
         }
+
         event.setAnnotation(eventDto.getAnnotation() == null ? event.getAnnotation() : eventDto.getAnnotation());
         event.setDescription(eventDto.getDescription() == null ? event.getDescription() : eventDto.getDescription());
         event.setEventDate(eventDate);
