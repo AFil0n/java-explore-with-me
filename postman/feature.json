@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "50d0dbce-0cdf-4045-ad11-3415dd44fe58",
 		"name": "\"Explore with me\" API comments",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "40792709"
 	},
 	"item": [
@@ -101,18 +101,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{baseURL}}/users/comments/{{uid}}/{{eid}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"users",
-								"comments",
-								"{{uid}}",
-								"{{eid}}"
-							]
-						}
+						"url": "{{baseURL}}/users/comments/{{uid}}/{{eid}}"
 					},
 					"response": []
 				},
@@ -185,18 +174,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{baseURL}}/users/comments/{{uid}}/{{eid}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"users",
-								"comments",
-								"{{uid}}",
-								"{{eid}}"
-							]
-						}
+						"url": "{{baseURL}}/users/comments/{{uid}}/{{eid}}"
 					},
 					"response": []
 				},
@@ -268,18 +246,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{baseURL}}/users/comments/{{uid}}/{{eid}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"users",
-								"comments",
-								"{{uid}}",
-								"{{eid}}"
-							]
-						}
+						"url": "{{baseURL}}/users/comments/{{uid}}/{{eid}}"
 					},
 					"response": []
 				},
@@ -351,18 +318,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{baseURL}}/users/comments/{{uid}}/{{eid}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"users",
-								"comments",
-								"{{uid}}",
-								"{{eid}}"
-							]
-						}
+						"url": "{{baseURL}}/users/comments/{{uid}}/{{eid}}"
 					},
 					"response": []
 				},
@@ -434,18 +390,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{baseURL}}/users/comments/{{uid}}/{{eid}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"users",
-								"comments",
-								"{{uid}}",
-								"{{eid}}"
-							]
-						}
+						"url": "{{baseURL}}/users/comments/{{uid}}/{{eid}}"
 					},
 					"response": []
 				}
@@ -554,17 +499,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{baseURL}}/users/comments/{{uid}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"users",
-								"comments",
-								"{{uid}}"
-							]
-						}
+						"url": "{{baseURL}}/users/comments/{{uid}}"
 					},
 					"response": []
 				},
@@ -650,17 +585,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{baseURL}}/users/comments/{{uid}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"users",
-								"comments",
-								"{{uid}}"
-							]
-						}
+						"url": "{{baseURL}}/users/comments/{{uid}}"
 					},
 					"response": []
 				},
@@ -744,17 +669,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{baseURL}}/users/comments/{{uid}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"users",
-								"comments",
-								"{{uid}}"
-							]
-						}
+						"url": "{{baseURL}}/users/comments/{{uid}}"
 					},
 					"response": []
 				},
@@ -839,17 +754,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{baseURL}}/users/comments/{{uid}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"users",
-								"comments",
-								"{{uid}}"
-							]
-						}
+						"url": "{{baseURL}}/users/comments/{{uid}}"
 					},
 					"response": []
 				},
@@ -934,17 +839,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "{{baseURL}}/users/comments/{{uid}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"users",
-								"comments",
-								"{{uid}}"
-							]
-						}
+						"url": "{{baseURL}}/users/comments/{{uid}}"
 					},
 					"response": []
 				}
@@ -1016,18 +911,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{baseURL}}/users/comments/{{uid}}/{{comment_id}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"users",
-								"comments",
-								"{{uid}}",
-								"{{comment_id}}"
-							]
-						}
+						"url": "{{baseURL}}/users/comments/{{uid}}/{{comment_id}}"
 					},
 					"response": []
 				},
@@ -1094,17 +978,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{baseURL}}/admin/comments/{{comment_id}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"admin",
-								"comments",
-								"{{comment_id}}"
-							]
-						}
+						"url": "{{baseURL}}/admin/comments/{{comment_id}}"
 					},
 					"response": []
 				},
@@ -1170,18 +1044,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{baseURL}}/users/comments/{{uid}}/9999999",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"users",
-								"comments",
-								"{{uid}}",
-								"9999999"
-							]
-						}
+						"url": "{{baseURL}}/users/comments/{{uid}}/9999999"
 					},
 					"response": []
 				},
@@ -1249,18 +1112,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": {
-							"raw": "{{baseURL}}/users/comments/{{uid}}/{{comment_id}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"users",
-								"comments",
-								"{{uid}}",
-								"{{comment_id}}"
-							]
-						}
+						"url": "{{baseURL}}/users/comments/{{uid}}/{{comment_id}}"
 					},
 					"response": []
 				}
@@ -1337,17 +1189,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{baseURL}}/users/comments/{{uid}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"users",
-								"comments",
-								"{{uid}}"
-							]
-						}
+						"url": "{{baseURL}}/users/comments/{{uid}}"
 					},
 					"response": []
 				},
@@ -1683,16 +1525,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{baseURL}}/comments/{{eid}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"comments",
-								"{{eid}}"
-							]
-						}
+						"url": "{{baseURL}}/comments/{{eid}}"
 					},
 					"response": []
 				},
@@ -1984,16 +1817,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{baseURL}}/admin/comments",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"admin",
-								"comments"
-							]
-						}
+						"url": "{{baseURL}}/admin/comments"
 					},
 					"response": []
 				},
