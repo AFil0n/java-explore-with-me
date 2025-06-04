@@ -19,7 +19,6 @@ import ru.practicum.extention.ConditionsNotMetException;
 import ru.practicum.extention.DateValidationException;
 import ru.practicum.extention.NotFoundException;
 import ru.practicum.user.model.User;
-import ru.practicum.user.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import ru.practicum.dto.StatsDto;
 import ru.practicum.user.service.UserService;
